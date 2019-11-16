@@ -1,0 +1,64 @@
+{
+  "products" : [
+    {
+      "productName" : "Microwave oven",
+      "id" : "1",
+      "category" : "Electronics",
+      "price" : "588$",
+      "wasPrice" : "788$",
+      "discount": "200$",
+      "image" : "https://www.lg.com/in/images/microwave-ovens/md05265526/gallery/Mobile-768x507_0000063.jpg",
+      "stockAvailable" : true
+    },
+    {
+      "productName" : "Television",
+      "id" : "2",
+      "category" : "Electronics",
+      "price" : "612$",
+      "wasPrice" : "700$",
+      "discount": "88$",
+      "image" : "https://images.news18.com/ibnlive/uploads/2019/09/OnePlus-TV1.png",
+      "stockAvailable" : true
+    },
+    {
+      "productName" : "Vacuum Cleaner",
+      "id" : "3",
+      "category" : "Electronics",
+      "price" : "172$",
+      "wasPrice" : "199$",
+      "discount": "27$",
+      "image" : "https://purepng.com/public/uploads/large/purepng.com-small-vacuum-cleanervacuum-cleanervacuumcleanersweeperhooverair-pumpsuck-up-dust-1701528434113ne7bj.png",
+      "stockAvailable" : false
+    },
+    {
+      "productName" : "Table",
+      "id" : "4",
+      "category" : "Furniture",
+      "price" : "58$",
+      "wasPrice" : "75$",
+      "discount": "17$",
+      "image" : "https://www.pngsee.com/uploadpng/full/82-827193_4-seater-dining-set-with-slatted-chair-back.png",
+      "stockAvailable" : true
+    },
+    {
+      "productName" : "Chair",
+      "id" : "5",
+      "category" : "Furniture",
+      "price" : "22$",
+      "wasPrice" : "30$",
+      "discount": "8$",
+      "image" : "https://i0.wp.com/sreditingzone.com/wp-content/uploads/2018/04/Chair-Png-11.png?resize=768%2C319&ssl=1",
+      "stockAvailable" : true
+    },
+    {
+      "productName" : "Almirah",
+      "id" : "6",
+      "category" : "Furniture",
+      "price" : "108$",
+      "wasPrice" : "158$",
+      "discount": "50$",
+      "image" : "https://purepng.com/public/uploads/large/purepng.com-cupboardcupboardpressa-cabinetdoor-and-shelves-1701527922642nlm5a.png",
+      "stockAvailable" : true
+    }
+  ]
+}
