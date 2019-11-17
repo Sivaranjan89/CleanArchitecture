@@ -15,7 +15,7 @@ class HomePageTest {
 
     @Before
     fun setUp() {
-        useCases = HomeUseCases()
+        //useCases = HomeUseCases()
     }
 
     @Test

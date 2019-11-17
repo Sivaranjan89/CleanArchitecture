@@ -9,11 +9,12 @@ import com.droid.cleanarchitecture.home.viewmodel.HomeViewModel
 import com.droid.cleanarchitecture.utils.FURNITURE
 import com.droid.cleanarchitecture.utils.LAPTOP
 import com.droid.cleanarchitecture.utils.inTransaction
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class HomeActivity : AppCompatActivity() {
 
-    //val model: HomeViewModel by viewModel()
-    lateinit var model: HomeViewModel
+    val model: HomeViewModel by viewModel()
+    //lateinit var model: HomeViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +22,7 @@ class HomeActivity : AppCompatActivity() {
 
         loadFragments()
 
-        model = ViewModelProviders.of(this).get(HomeViewModel::class.java)
+        //model = ViewModelProviders.of(this).get(HomeViewModel::class.java)
 
         model.fetchProducts()
     }

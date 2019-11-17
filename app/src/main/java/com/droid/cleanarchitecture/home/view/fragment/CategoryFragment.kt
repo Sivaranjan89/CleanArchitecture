@@ -17,7 +17,7 @@ import com.droid.cleanarchitecture.utils.FURNITURE
 import com.droid.cleanarchitecture.utils.LAPTOP
 import com.mobeewave.retail.model.Product
 
-class CategoryFragment : Fragment() {
+class CategoryFragment() : Fragment() {
 
     //val model: HomeViewModel by viewModel()
     lateinit var model: HomeViewModel

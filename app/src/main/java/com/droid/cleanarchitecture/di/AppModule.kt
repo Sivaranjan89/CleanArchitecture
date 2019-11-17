@@ -9,10 +9,10 @@ import org.koin.dsl.module
 
 val appModule = module {
     viewModel {
-        HomeViewModel()
+        HomeViewModel(get())
     }
     factory {
-        HomeUseCases()
+        HomeUseCases(get())
     }
     single {
         HomeRepository()

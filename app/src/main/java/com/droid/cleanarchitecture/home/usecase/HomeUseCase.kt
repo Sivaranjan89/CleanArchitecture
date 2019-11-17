@@ -7,9 +7,7 @@ import com.google.gson.Gson
 import com.mobeewave.retail.model.Product
 import com.mobeewave.retail.model.ProductList
 
-class HomeUseCases() {
-
-    val repository: HomeRepository = HomeRepository()
+class HomeUseCases(val repository: HomeRepository) {
 
     fun getProducts() = repository.getCategoriesJsonData()
 
