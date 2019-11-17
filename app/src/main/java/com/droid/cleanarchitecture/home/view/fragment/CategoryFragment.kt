@@ -19,7 +19,7 @@ import com.mobeewave.retail.model.Product
 
 class CategoryFragment() : Fragment() {
 
-    lateinit var model: HomeViewModel
+    private lateinit var model: HomeViewModel
 
     private var recyclerView: RecyclerView? = null
 

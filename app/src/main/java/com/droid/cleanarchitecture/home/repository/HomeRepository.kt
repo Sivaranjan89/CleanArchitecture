@@ -1,16 +1,15 @@
 package com.droid.cleanarchitecture.home.repository
 
-import androidx.lifecycle.MutableLiveData
-import com.droid.cleanarchitecture.CAApplication
+import android.content.Context
 import com.droid.cleanarchitecture.utils.PRODUCTS_ALL
 import com.google.gson.Gson
 import com.mobeewave.retail.model.ProductList
 
-class HomeRepository {
+class HomeRepository(private val context: Context) {
 
     fun getCategoriesJsonData(): ProductList? {
 
-        val json = CAApplication.getContext().assets.open(PRODUCTS_ALL).bufferedReader().use {
+        val json = context.assets.open(PRODUCTS_ALL).bufferedReader().use {
             it.readText()
         }
 

@@ -3,11 +3,10 @@ package com.droid.cleanarchitecture.home.usecase
 import com.droid.cleanarchitecture.home.repository.HomeRepository
 import com.droid.cleanarchitecture.utils.FURNITURE
 import com.droid.cleanarchitecture.utils.LAPTOP
-import com.google.gson.Gson
 import com.mobeewave.retail.model.Product
 import com.mobeewave.retail.model.ProductList
 
-class HomeUseCases(val repository: HomeRepository) {
+class HomeUseCases(private val repository: HomeRepository) {
 
     fun getProducts() = repository.getCategoriesJsonData()
 

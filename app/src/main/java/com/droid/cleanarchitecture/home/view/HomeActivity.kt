@@ -2,13 +2,10 @@ package com.droid.cleanarchitecture.home.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProviders
 import com.droid.cleanarchitecture.R
 import com.droid.cleanarchitecture.home.view.fragment.CategoryFragment
 import com.droid.cleanarchitecture.home.viewmodel.HomeViewModel
-import com.droid.cleanarchitecture.utils.FURNITURE
-import com.droid.cleanarchitecture.utils.LAPTOP
-import com.droid.cleanarchitecture.utils.inTransaction
+import com.droid.cleanarchitecture.utils.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class HomeActivity : AppCompatActivity() {

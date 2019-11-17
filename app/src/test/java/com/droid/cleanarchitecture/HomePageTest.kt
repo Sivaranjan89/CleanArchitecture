@@ -1,21 +1,23 @@
 package com.droid.cleanarchitecture
 
+import com.droid.cleanarchitecture.di.appModule
 import com.droid.cleanarchitecture.home.usecase.HomeUseCases
-import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
-import org.junit.runner.RunWith
-import org.junit.runners.JUnit4
+import org.koin.core.context.startKoin
+import org.koin.test.KoinTest
+import org.koin.test.inject
 
-@RunWith(JUnit4::class)
-class HomePageTest {
 
-    lateinit var useCases: HomeUseCases
+class HomePageTest : KoinTest {
 
+    val useCases: HomeUseCases by inject()
 
     @Before
     fun setUp() {
-        //useCases = HomeUseCases()
+        startKoin {
+            modules(appModule)
+        }
     }
 
     @Test

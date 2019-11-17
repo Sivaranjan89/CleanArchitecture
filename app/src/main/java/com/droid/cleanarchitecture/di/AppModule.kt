@@ -14,7 +14,7 @@ val appModule = module {
     factory {
         HomeUseCases(get())
     }
-    single {
-        HomeRepository()
+    factory {
+        HomeRepository(get())
     }
 }
