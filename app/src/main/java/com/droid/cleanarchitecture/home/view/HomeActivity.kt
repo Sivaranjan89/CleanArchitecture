@@ -14,17 +14,14 @@ import org.koin.android.viewmodel.ext.android.viewModel
 class HomeActivity : AppCompatActivity() {
 
     val model: HomeViewModel by viewModel()
-    //lateinit var model: HomeViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_activity)
 
-        loadFragments()
-
-        //model = ViewModelProviders.of(this).get(HomeViewModel::class.java)
-
         model.fetchProducts()
+
+        loadFragments()
     }
 
     private fun loadFragments() {

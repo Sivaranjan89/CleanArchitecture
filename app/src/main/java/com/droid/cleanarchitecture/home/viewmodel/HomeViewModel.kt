@@ -7,15 +7,15 @@ import com.mobeewave.retail.model.Product
 
 class HomeViewModel(val useCase: HomeUseCases) : ViewModel() {
 
-    var laptop: MutableLiveData<ArrayList<Product>> = MutableLiveData()
-    var furniture: MutableLiveData<ArrayList<Product>> = MutableLiveData()
+    var laptop: ArrayList<Product> = ArrayList()
+    var furniture: ArrayList<Product> = ArrayList()
 
     fun fetchProducts() {
         val productList = useCase.getProducts()
 
         productList?.let {
-            laptop.value = useCase.filterLaptop(it)
-            furniture.value = useCase.filterFurniture(it)
+            laptop = useCase.filterLaptop(it)
+            furniture = useCase.filterFurniture(it)
         }
     }
 

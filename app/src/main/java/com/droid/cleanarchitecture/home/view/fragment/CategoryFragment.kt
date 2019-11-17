@@ -19,7 +19,6 @@ import com.mobeewave.retail.model.Product
 
 class CategoryFragment() : Fragment() {
 
-    //val model: HomeViewModel by viewModel()
     lateinit var model: HomeViewModel
 
     private var recyclerView: RecyclerView? = null
@@ -44,9 +43,10 @@ class CategoryFragment() : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        model = activity?.run {
-            ViewModelProviders.of(this)[HomeViewModel::class.java]
-        } ?: throw Exception("Invalid Activity")
+
+        activity?.let {
+            model = ViewModelProviders.of(it).get(HomeViewModel::class.java)
+        }
     }
 
 
@@ -55,7 +55,7 @@ class CategoryFragment() : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.category_fragment, null)
+        val view = inflater.inflate(R.layout.category_fragment, container, false)
 
         initialize(view)
 
@@ -65,12 +65,10 @@ class CategoryFragment() : Fragment() {
 
             title?.text = name
 
-            activity?.let { ctx ->
-                if (name.equals(LAPTOP)) {
-                    loadList(model.laptop.value!!)
-                } else if (name.equals(FURNITURE)) {
-                    loadList(model.furniture.value!!)
-                }
+            if (name.equals(LAPTOP)) {
+                loadList(model.laptop)
+            } else if (name.equals(FURNITURE)) {
+                loadList(model.furniture)
             }
         }
 
