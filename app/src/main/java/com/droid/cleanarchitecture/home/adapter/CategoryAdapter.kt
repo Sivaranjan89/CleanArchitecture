@@ -31,7 +31,7 @@ class CategoryAdapter(
         holder.name.text = items.get(position).productName
         holder.price.text = items.get(position).price
         holder.item_view.setOnClickListener {
-            //model.clickedProduct(item = items.get(position))
+            model.clickedProduct.value = items.get(position)
         }
     }
 

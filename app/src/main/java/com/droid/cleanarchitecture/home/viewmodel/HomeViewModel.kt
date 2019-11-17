@@ -1,5 +1,6 @@
 package com.droid.cleanarchitecture.home.viewmodel
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.droid.cleanarchitecture.home.usecase.HomeUseCases
 import com.mobeewave.retail.model.Product
@@ -12,6 +13,7 @@ class HomeViewModel() : ViewModel(), KoinComponent {
 
     var laptop: ArrayList<Product> = ArrayList()
     var furniture: ArrayList<Product> = ArrayList()
+    var clickedProduct: MutableLiveData<Product> = MutableLiveData()
 
     fun fetchProducts() {
         useCase.getProducts()?.let {
