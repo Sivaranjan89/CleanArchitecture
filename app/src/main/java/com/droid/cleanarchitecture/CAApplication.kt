@@ -30,7 +30,7 @@ class CAApplication : Application() {
         startKoin {
             androidLogger()
             androidContext(this@CAApplication)
-            loadKoinModules(appModule)
+            loadKoinModules(listOf(appModule))
         }
 
     }

@@ -4,8 +4,12 @@ import android.content.Context
 import com.droid.cleanarchitecture.utils.PRODUCTS_ALL
 import com.google.gson.Gson
 import com.mobeewave.retail.model.ProductList
+import org.koin.core.KoinComponent
+import org.koin.core.inject
 
-class HomeRepository(private val context: Context) {
+class HomeRepository : KoinComponent {
+
+    val context: Context by inject()
 
     fun getCategoriesJsonData(): ProductList? {
 
