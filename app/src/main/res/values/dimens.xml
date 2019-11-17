@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dimen_toolbar">58sp</dimen>
+    <dimen name="dimen_20">20sp</dimen>
+    <dimen name="dimen_30">30sp</dimen>
+    <dimen name="dimen_10">10sp</dimen>
+    <dimen name="dimen_5">5sp</dimen>
+    <dimen name="dimen_150">150sp</dimen>
+    <dimen name="dimen_100">100sp</dimen>
+</resources>

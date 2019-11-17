@@ -1,64 +1,60 @@
 {
   "products" : [
     {
-      "productName" : "Microwave oven",
+      "productName": "Macbook Pro 15",
       "id" : "1",
-      "category" : "Electronics",
-      "price" : "588$",
-      "wasPrice" : "788$",
-      "discount": "200$",
-      "image" : "https://www.lg.com/in/images/microwave-ovens/md05265526/gallery/Mobile-768x507_0000063.jpg",
-      "stockAvailable" : true
+      "category": "Laptop",
+      "price": "2200$",
+      "image": "https://switch.com.my/wp-content/uploads/2018/08/MBTB1518SG.png"
     },
     {
-      "productName" : "Television",
+      "productName": "Macbook Pro 13",
       "id" : "2",
-      "category" : "Electronics",
-      "price" : "612$",
-      "wasPrice" : "700$",
-      "discount": "88$",
-      "image" : "https://images.news18.com/ibnlive/uploads/2019/09/OnePlus-TV1.png",
-      "stockAvailable" : true
+      "category": "Laptop",
+      "price": "1900$",
+      "image": "https://switch.com.my/wp-content/uploads/2017/11/macbookpro_13_spacegray.png"
     },
     {
-      "productName" : "Vacuum Cleaner",
+      "productName": "Sony Waio",
       "id" : "3",
-      "category" : "Electronics",
-      "price" : "172$",
-      "wasPrice" : "199$",
-      "discount": "27$",
-      "image" : "https://purepng.com/public/uploads/large/purepng.com-small-vacuum-cleanervacuum-cleanervacuumcleanersweeperhooverair-pumpsuck-up-dust-1701528434113ne7bj.png",
-      "stockAvailable" : false
+      "category": "Laptop",
+      "price": "1200$",
+      "image": "https://images.reevoo.com/products/585/585030/original.png?fingerprint=3e992fb6e393569980270511187b88cf3f599363"
+    },
+    {
+      "productName": "HP",
+      "id": "4",
+      "category": "Laptop",
+      "price": "980$",
+      "image": "http://pluspng.com/img-png/laptop-png-laptop-notebook-png-image-1358.png"
     },
     {
       "productName" : "Table",
       "id" : "4",
       "category" : "Furniture",
       "price" : "58$",
-      "wasPrice" : "75$",
-      "discount": "17$",
-      "image" : "https://www.pngsee.com/uploadpng/full/82-827193_4-seater-dining-set-with-slatted-chair-back.png",
-      "stockAvailable" : true
+      "image": "https://www.pngsee.com/uploadpng/full/82-827193_4-seater-dining-set-with-slatted-chair-back.png"
     },
     {
       "productName" : "Chair",
       "id" : "5",
       "category" : "Furniture",
       "price" : "22$",
-      "wasPrice" : "30$",
-      "discount": "8$",
-      "image" : "https://i0.wp.com/sreditingzone.com/wp-content/uploads/2018/04/Chair-Png-11.png?resize=768%2C319&ssl=1",
-      "stockAvailable" : true
+      "image": "https://i0.wp.com/sreditingzone.com/wp-content/uploads/2018/04/Chair-Png-11.png?resize=768%2C319&ssl=1"
     },
     {
       "productName" : "Almirah",
       "id" : "6",
       "category" : "Furniture",
       "price" : "108$",
-      "wasPrice" : "158$",
-      "discount": "50$",
-      "image" : "https://purepng.com/public/uploads/large/purepng.com-cupboardcupboardpressa-cabinetdoor-and-shelves-1701527922642nlm5a.png",
-      "stockAvailable" : true
+      "image": "https://purepng.com/public/uploads/large/purepng.com-cupboardcupboardpressa-cabinetdoor-and-shelves-1701527922642nlm5a.png"
+    },
+    {
+      "productName": "Dining Table",
+      "id": "6",
+      "category": "Furniture",
+      "price": "89$",
+      "image": "https://www.sccpre.cat/mypng/detail/13-135605_dining-set-table-with-4-chairs-png-dining.png"
     }
   ]
 }
