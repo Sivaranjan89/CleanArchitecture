@@ -38,7 +38,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun navigateToProductDetails(product: ProductsEntity) {
         openActivity(ProductDetailActivity::class.java) {
-            putString(PRODUCT, product.productName)
+            putLong(PRODUCT, product.productId)
         }
     }
 

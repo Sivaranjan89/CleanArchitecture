@@ -13,7 +13,7 @@ class PDPViewModel() : ViewModel(), KoinComponent {
 
     var cartSuccess: MutableLiveData<Boolean> = MutableLiveData()
 
-    fun getProduct(product: String) = useCase.getProduct(product)
+    fun getProduct(product: Long) = useCase.getProduct(product)
 
     fun addProductToCart(product: ProductDetail) {
         cartSuccess.value = useCase.addProductToCart(product)

@@ -12,6 +12,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.droid.cleanarchitecture.R
 import com.droid.cleanarchitecture.databinding.PdpActivityBinding
+import com.droid.cleanarchitecture.db.ProductsEntity
 import com.droid.cleanarchitecture.pdp.model.ProductDetail
 import com.droid.cleanarchitecture.pdp.viewmodel.PDPViewModel
 import com.droid.cleanarchitecture.utils.PRODUCT
@@ -21,9 +22,9 @@ import org.koin.core.inject
 
 class ProductDetailActivity : AppCompatActivity(), KoinComponent {
 
-    private var productName: String? = ""
+    private var productId: Long? = 0
     private val model: PDPViewModel by inject()
-    private var product: ProductDetail? = null
+    private var product: ProductsEntity? = null
     private var image: ImageView? = null
     private var back: ImageView? = null
     private var wasPrice: TextView? = null
@@ -38,7 +39,7 @@ class ProductDetailActivity : AppCompatActivity(), KoinComponent {
 
         init()
 
-        product = productName?.let { model.getProduct(it.replace(" ", "") + ".json") }
+        product = productId?.let { model.getProduct(it) }
 
         binding.product = product
 
@@ -51,7 +52,7 @@ class ProductDetailActivity : AppCompatActivity(), KoinComponent {
                 addToCart?.text = getString(R.string.add_to_cart)
                 navigateToCart()
             } else {
-                product?.let { it1 -> model.addProductToCart(it1) }
+                //product?.let { it1 -> model.addProductToCart(it1) }
             }
         }
 
@@ -71,7 +72,7 @@ class ProductDetailActivity : AppCompatActivity(), KoinComponent {
     }
 
     private fun init() {
-        productName = intent.getStringExtra(PRODUCT)
+        productId = intent.getLongExtra(PRODUCT, 0)
         image = findViewById(R.id.product_image)
         back = findViewById(R.id.back)
         wasPrice = findViewById(R.id.product_was_price)

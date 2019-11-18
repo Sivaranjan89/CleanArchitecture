@@ -6,7 +6,7 @@
 
         <variable
             name="product"
-            type="com.droid.cleanarchitecture.pdp.model.ProductDetail" />
+            type="com.droid.cleanarchitecture.db.ProductsEntity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

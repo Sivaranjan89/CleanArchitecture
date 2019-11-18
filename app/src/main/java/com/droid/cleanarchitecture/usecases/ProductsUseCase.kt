@@ -16,7 +16,7 @@ class ProductsUseCase : KoinComponent {
 
     fun getProducts() = repository.getAllProducts()
 
-    fun getProduct(product: String) = repository.getProduct(product)
+    fun getProduct(product: Long) = repository.getProduct(product)
 
     fun filterLaptop(list: List<ProductsEntity>): ArrayList<ProductsEntity> {
         val products: ArrayList<ProductsEntity> = ArrayList()
