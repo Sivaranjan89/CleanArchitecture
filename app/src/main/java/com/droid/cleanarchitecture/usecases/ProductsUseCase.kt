@@ -1,18 +1,21 @@
-package com.droid.cleanarchitecture.home.usecase
+package com.droid.cleanarchitecture.usecases
 
-import com.droid.cleanarchitecture.home.repository.HomeRepository
+import com.droid.cleanarchitecture.home.model.Product
+import com.droid.cleanarchitecture.home.model.ProductList
+import com.droid.cleanarchitecture.pdp.model.ProductDetail
+import com.droid.cleanarchitecture.repository.ProductsRepository
 import com.droid.cleanarchitecture.utils.FURNITURE
 import com.droid.cleanarchitecture.utils.LAPTOP
-import com.mobeewave.retail.model.Product
-import com.mobeewave.retail.model.ProductList
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 
-class HomeUseCases : KoinComponent {
+class ProductsUseCase : KoinComponent {
 
-    private val repository: HomeRepository by inject()
+    private val repository: ProductsRepository by inject()
 
     fun getProducts() = repository.getCategoriesJsonData()
+
+    fun getProduct(product: String) = repository.getProduct(product)
 
     fun filterLaptop(list: ProductList?): ArrayList<Product> {
         val products: ArrayList<Product> = ArrayList()
@@ -40,5 +43,9 @@ class HomeUseCases : KoinComponent {
         }
 
         return products
+    }
+
+    fun addProductToCart(product: ProductDetail): Boolean {
+        return true
     }
 }

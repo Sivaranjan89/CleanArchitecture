@@ -1,28 +1,30 @@
 package com.droid.cleanarchitecture.di
 
-import com.droid.cleanarchitecture.home.repository.HomeRepository
-import com.droid.cleanarchitecture.home.usecase.HomeUseCases
 import com.droid.cleanarchitecture.home.viewmodel.HomeViewModel
-import org.koin.android.ext.koin.androidApplication
-import org.koin.android.ext.koin.androidContext
+import com.droid.cleanarchitecture.pdp.viewmodel.PDPViewModel
+import com.droid.cleanarchitecture.repository.ProductsRepository
+import com.droid.cleanarchitecture.usecases.ProductsUseCase
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 
-val appModule = module {
+val viewModelModule = module {
     viewModel {
         HomeViewModel()
     }
-    factory {
-        HomeUseCases()
-    }
-    factory {
-        HomeRepository()
+    viewModel {
+        PDPViewModel()
     }
 }
 
-val context = module {
-    single {
-        androidContext()
+val usecaseModule = module {
+    factory {
+        ProductsUseCase()
+    }
+}
+
+val repoModule = module {
+    factory {
+        ProductsRepository()
     }
 }

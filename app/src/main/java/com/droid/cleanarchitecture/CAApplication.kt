@@ -2,7 +2,9 @@ package com.droid.cleanarchitecture
 
 import android.app.Application
 import android.content.Context
-import com.droid.cleanarchitecture.di.appModule
+import com.droid.cleanarchitecture.di.repoModule
+import com.droid.cleanarchitecture.di.usecaseModule
+import com.droid.cleanarchitecture.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.loadKoinModules
@@ -30,7 +32,7 @@ class CAApplication : Application() {
         startKoin {
             androidLogger()
             androidContext(this@CAApplication)
-            loadKoinModules(listOf(appModule))
+            loadKoinModules(listOf(viewModelModule, usecaseModule, repoModule))
         }
 
     }

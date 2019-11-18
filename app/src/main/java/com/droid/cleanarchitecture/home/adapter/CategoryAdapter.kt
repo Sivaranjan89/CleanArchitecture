@@ -6,8 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.droid.cleanarchitecture.R
+import com.droid.cleanarchitecture.home.model.Product
 import com.droid.cleanarchitecture.home.viewmodel.HomeViewModel
-import com.mobeewave.retail.model.Product
+
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_view.view.*
 

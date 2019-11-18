@@ -3,4 +3,9 @@
     <string name="product_image">Product Image</string>
     <string name="page_back">Page Back</string>
     <string name="cart">Cart</string>
+    <string name="save">Save</string>
+    <string name="add_to_cart">Add to Cart</string>
+    <string name="view_cart">View Cart</string>
+    <string name="add_failure_to_cart">Could not Add Item to Cart</string>
+    <string name="product_image_pdp">Product Image PDP</string>
 </resources>

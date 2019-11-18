@@ -1,11 +1,11 @@
 package com.droid.cleanarchitecture
 
-import com.droid.cleanarchitecture.di.appModule
-import com.droid.cleanarchitecture.di.context
-import com.droid.cleanarchitecture.home.repository.HomeRepository
-import com.droid.cleanarchitecture.home.usecase.HomeUseCases
-import com.mobeewave.retail.model.Product
-import com.mobeewave.retail.model.ProductList
+import com.droid.cleanarchitecture.di.repoModule
+import com.droid.cleanarchitecture.di.usecaseModule
+import com.droid.cleanarchitecture.di.viewModelModule
+import com.droid.cleanarchitecture.home.model.ProductList
+import com.droid.cleanarchitecture.repository.ProductsRepository
+import com.droid.cleanarchitecture.usecases.ProductsUseCase
 import org.junit.After
 import org.junit.Assert
 import org.junit.Before
@@ -21,19 +21,19 @@ import org.mockito.Mockito.mock
 class HomePageTest : KoinTest {
 
 
-    val useCases: HomeUseCases by inject()
+    val useCases: ProductsUseCase by inject()
 
 
     @Before
     fun setUp() {
         startKoin {
-            modules(listOf(appModule))
+            modules(listOf(viewModelModule, usecaseModule, repoModule))
         }
     }
 
     @Test
     fun doesFetchProducts() {
-        val homeRepository = mock(HomeRepository::class.java)
+        val homeRepository = mock(ProductsRepository::class.java)
         val productList = mock(ProductList::class.java)
         `when`(homeRepository.getCategoriesJsonData()).thenReturn(productList)
     }
