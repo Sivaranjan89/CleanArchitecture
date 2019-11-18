@@ -1,0 +1,10 @@
+{
+  "productName": "Macbook Pro 15",
+  "id": "1",
+  "category": "Laptop",
+  "price": "2200$",
+  "wasPrice": "2399$",
+  "discount": "199$",
+  "image": "https://switch.com.my/wp-content/uploads/2018/08/MBTB1518SG.png",
+  "stockAvailable": true
+}
