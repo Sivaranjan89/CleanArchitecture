@@ -6,10 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.droid.cleanarchitecture.R
+import com.droid.cleanarchitecture.db.ProductsEntity
 import com.droid.cleanarchitecture.home.adapter.CategoryAdapter
 import com.droid.cleanarchitecture.home.model.Product
 import com.droid.cleanarchitecture.home.viewmodel.HomeViewModel
@@ -66,16 +68,16 @@ class CategoryFragment() : Fragment() {
             title?.text = name
 
             if (name.equals(LAPTOP)) {
-                loadList(model.laptop)
+                model.laptop.observe(this, Observer { loadList(it) })
             } else if (name.equals(FURNITURE)) {
-                loadList(model.furniture)
+                model.furniture.observe(this, Observer { loadList(it) })
             }
         }
 
         return view
     }
 
-    private fun loadList(products: ArrayList<Product>) {
+    private fun loadList(products: ArrayList<ProductsEntity>) {
         adapter = CategoryAdapter(products, activity, model)
         recyclerView?.setAdapter(adapter)
     }
