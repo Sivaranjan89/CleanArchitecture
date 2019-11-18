@@ -1,0 +1,10 @@
+{
+  "productName": "Macbook Pro 13",
+  "id": "2",
+  "category": "Laptop",
+  "price": "1900$",
+  "wasPrice": "2199$",
+  "discount": "199$",
+  "image": "https://switch.com.my/wp-content/uploads/2017/11/macbookpro_13_spacegray.png",
+  "stockAvailable": true
+}
