@@ -24,9 +24,9 @@ class HomeActivity : AppCompatActivity() {
 
         loadProductsIntoDB()
 
-        model.getProducts()?.observe(this, Observer<List<ProductsEntity>> { t ->
-            model.filterFurniture(t)
-            model.filterLaptop(t)
+        model.getProducts()?.observe(this, Observer {
+            model.filterFurniture(it)
+            model.filterLaptop(it)
         })
 
         loadFragments()
@@ -64,7 +64,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun getAllProducts(): List<ProductsEntity> {
-        var products: MutableList<ProductsEntity> = ArrayList()
+        val products: MutableList<ProductsEntity> = ArrayList()
 
         products.add(
             ProductsEntity(

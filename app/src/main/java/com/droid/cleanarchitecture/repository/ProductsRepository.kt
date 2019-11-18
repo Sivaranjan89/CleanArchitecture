@@ -1,25 +1,16 @@
 package com.droid.cleanarchitecture.repository
 
 import android.content.Context
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.droid.cleanarchitecture.db.ProductsDao
 import com.droid.cleanarchitecture.db.ProductsDatabase
-import com.droid.cleanarchitecture.db.ProductsEntity
-import com.droid.cleanarchitecture.home.model.ProductList
 import com.droid.cleanarchitecture.pdp.model.ProductDetail
-import com.droid.cleanarchitecture.utils.PRODUCTS_ALL
 import com.google.gson.Gson
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 
 class ProductsRepository : KoinComponent {
 
     val context: Context by inject()
-
-    private var products: LiveData<List<ProductsEntity>>? = null
 
     private var productDao: ProductsDao?
 
