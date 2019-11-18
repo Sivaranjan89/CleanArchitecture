@@ -1,6 +1,7 @@
 package com.droid.cleanarchitecture.repository
 
 import android.content.Context
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.droid.cleanarchitecture.db.ProductsDatabase
 import com.droid.cleanarchitecture.db.ProductsEntity
@@ -17,16 +18,21 @@ class ProductsRepository : KoinComponent {
 
     val context: Context by inject()
 
-    fun getAllProducts(): MutableLiveData<List<ProductsEntity>> {
+    private var products: LiveData<List<ProductsEntity>>? = null
+
+    init {
+
+    }
+
+    fun getAllProducts(): LiveData<List<ProductsEntity>>? {
+
         val db = ProductsDatabase.getInstance(context)
-        var items: MutableLiveData<List<ProductsEntity>> = MutableLiveData()
 
         GlobalScope.launch {
-            db?.getProductsDao()?.getAllProducts()?.let {
-                items.value = it
-            }
+            products = db?.getProductsDao()?.getAllProducts()
         }
-        return items
+
+        return products
     }
 
     fun getProduct(product: String): ProductDetail? {

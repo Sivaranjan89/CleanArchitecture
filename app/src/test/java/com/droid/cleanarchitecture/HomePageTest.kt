@@ -31,7 +31,7 @@ class HomePageTest : KoinTest {
         }
     }
 
-    @Test
+    /*@Test
     fun doesFetchProducts() {
         val homeRepository = mock(ProductsRepository::class.java)
         val productList = mock(ProductList::class.java)
@@ -48,7 +48,7 @@ class HomePageTest : KoinTest {
     fun filterFurnitureWithNull() {
         val list = useCases.filterFurniture(null)
         Assert.assertNotNull(list)
-    }
+    }*/
 
     @After
     fun after() {

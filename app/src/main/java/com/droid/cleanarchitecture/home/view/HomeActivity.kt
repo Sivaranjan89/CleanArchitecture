@@ -24,9 +24,9 @@ class HomeActivity : AppCompatActivity() {
 
         loadProductsIntoDB()
 
-        model.fetchProducts().observe(this, Observer { list ->
-            model.filterLaptop(list)
-            model.filterFurniture(list)
+        model.getProducts()?.observe(this, Observer {
+            model.filterFurniture(it)
+            model.filterLaptop(it)
         })
 
         loadFragments()
