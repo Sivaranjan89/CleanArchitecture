@@ -2,6 +2,9 @@ package com.droid.cleanarchitecture.repository
 
 import android.content.Context
 import com.droid.cleanarchitecture.db.*
+import com.droid.cleanarchitecture.db.dao.CartDao
+import com.droid.cleanarchitecture.db.dao.ProductsDao
+import com.droid.cleanarchitecture.db.entity.CartProductEntity
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 

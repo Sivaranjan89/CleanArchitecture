@@ -11,9 +11,8 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.droid.cleanarchitecture.R
-import com.droid.cleanarchitecture.db.ProductsEntity
+import com.droid.cleanarchitecture.db.entity.ProductsEntity
 import com.droid.cleanarchitecture.home.adapter.CategoryAdapter
-import com.droid.cleanarchitecture.home.model.Product
 import com.droid.cleanarchitecture.home.viewmodel.HomeViewModel
 import com.droid.cleanarchitecture.utils.ARG_NAME
 import com.droid.cleanarchitecture.utils.FURNITURE

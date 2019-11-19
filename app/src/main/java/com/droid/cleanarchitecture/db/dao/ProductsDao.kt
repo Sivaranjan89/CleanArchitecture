@@ -1,7 +1,8 @@
-package com.droid.cleanarchitecture.db
+package com.droid.cleanarchitecture.db.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.droid.cleanarchitecture.db.entity.ProductsEntity
 
 @Dao
 interface ProductsDao {

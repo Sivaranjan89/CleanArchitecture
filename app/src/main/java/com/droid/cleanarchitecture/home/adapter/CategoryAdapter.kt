@@ -6,8 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.droid.cleanarchitecture.R
-import com.droid.cleanarchitecture.db.ProductsEntity
-import com.droid.cleanarchitecture.home.model.Product
+import com.droid.cleanarchitecture.db.entity.ProductsEntity
 import com.droid.cleanarchitecture.home.viewmodel.HomeViewModel
 
 import com.squareup.picasso.Picasso

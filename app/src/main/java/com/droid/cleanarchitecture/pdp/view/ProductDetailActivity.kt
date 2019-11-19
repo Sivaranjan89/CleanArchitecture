@@ -6,14 +6,12 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.droid.cleanarchitecture.R
 import com.droid.cleanarchitecture.databinding.PdpActivityBinding
-import com.droid.cleanarchitecture.db.CartProductEntity
-import com.droid.cleanarchitecture.db.ProductsEntity
+import com.droid.cleanarchitecture.db.entity.ProductsEntity
 import com.droid.cleanarchitecture.pdp.viewmodel.PDPViewModel
 import com.droid.cleanarchitecture.utils.PRODUCT
 import com.droid.cleanarchitecture.utils.getCartProduct
@@ -23,14 +21,19 @@ import org.koin.core.inject
 
 class ProductDetailActivity : AppCompatActivity(), KoinComponent {
 
-    private var productId: Long? = 0
     private val model: PDPViewModel by inject()
+
+    private var productId: Long? = 0
     private var product: ProductsEntity? = null
+
     private var image: ImageView? = null
     private var back: ImageView? = null
     private var wasPrice: TextView? = null
+
     private var addToCart: Button? = null
+
     private lateinit var binding: PdpActivityBinding
+
     private var itemAdded: Boolean = false
 
 
@@ -40,15 +43,13 @@ class ProductDetailActivity : AppCompatActivity(), KoinComponent {
 
         init()
 
-
         productId?.let {
             model.getProduct(it)?.observe(this, Observer {
                 product = it
 
                 binding.product = product
 
-                Picasso.get().load(product?.image).placeholder(R.mipmap.placeholder)
-                    .into(image)
+                Picasso.get().load(product?.image).placeholder(R.mipmap.placeholder).into(image)
             })
         }
 

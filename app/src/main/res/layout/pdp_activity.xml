@@ -3,10 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
             name="product"
-            type="com.droid.cleanarchitecture.db.ProductsEntity" />
+            type="com.droid.cleanarchitecture.db.entity.ProductsEntity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

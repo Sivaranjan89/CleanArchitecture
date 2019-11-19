@@ -1,11 +1,8 @@
 package com.droid.cleanarchitecture.home.viewmodel
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.droid.cleanarchitecture.db.ProductsEntity
-import com.droid.cleanarchitecture.di.usecaseModule
-import com.droid.cleanarchitecture.home.model.Product
+import com.droid.cleanarchitecture.db.entity.ProductsEntity
 import com.droid.cleanarchitecture.usecases.ProductsUseCase
 import org.koin.core.KoinComponent
 import org.koin.core.inject

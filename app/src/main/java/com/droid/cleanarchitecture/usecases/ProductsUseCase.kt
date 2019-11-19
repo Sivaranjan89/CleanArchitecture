@@ -1,7 +1,7 @@
 package com.droid.cleanarchitecture.usecases
 
-import com.droid.cleanarchitecture.db.CartProductEntity
-import com.droid.cleanarchitecture.db.ProductsEntity
+import com.droid.cleanarchitecture.db.entity.CartProductEntity
+import com.droid.cleanarchitecture.db.entity.ProductsEntity
 import com.droid.cleanarchitecture.repository.ProductsRepository
 import com.droid.cleanarchitecture.utils.FURNITURE
 import com.droid.cleanarchitecture.utils.LAPTOP
@@ -16,10 +16,10 @@ class ProductsUseCase : KoinComponent {
 
     fun getProduct(product: Long) = repository.getProduct(product)
 
-    fun filterLaptop(list: List<ProductsEntity>): ArrayList<ProductsEntity> {
+    fun filterLaptop(list: List<ProductsEntity>?): ArrayList<ProductsEntity> {
         val products: ArrayList<ProductsEntity> = ArrayList()
 
-        list.let {
+        list?.let {
             for (item in it) {
                 if (LAPTOP.equals(item.category)) {
                     products.add(item)
@@ -30,10 +30,10 @@ class ProductsUseCase : KoinComponent {
         return products
     }
 
-    fun filterFurniture(list: List<ProductsEntity>): ArrayList<ProductsEntity> {
+    fun filterFurniture(list: List<ProductsEntity>?): ArrayList<ProductsEntity> {
         val products: ArrayList<ProductsEntity> = ArrayList()
 
-        list.let {
+        list?.let {
             for (item in it) {
                 if (FURNITURE.equals(item.category)) {
                     products.add(item)

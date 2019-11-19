@@ -1,40 +1,37 @@
 package com.droid.cleanarchitecture
 
+import android.os.Handler
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry
+import com.droid.cleanarchitecture.db.ProductsDatabase
 import com.droid.cleanarchitecture.db.dao.ProductsDao
 import com.droid.cleanarchitecture.db.entity.ProductsEntity
-import com.droid.cleanarchitecture.di.repoModule
-import com.droid.cleanarchitecture.di.usecaseModule
-import com.droid.cleanarchitecture.di.viewModelModule
-import com.droid.cleanarchitecture.usecases.ProductsUseCase
 import org.junit.After
-import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.junit.runners.JUnit4
-import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
-import org.koin.test.KoinTest
-import org.koin.test.inject
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
 
-@RunWith(JUnit4::class)
-class HomePageTest : KoinTest {
-
-
-    val useCases: ProductsUseCase by inject()
+@RunWith(AndroidJUnit4::class)
+class ProductsTest {
 
     var productDao: ProductsDao? = null
 
 
     @Before
     fun setUp() {
-        startKoin {
+        ProductsDatabase.TEST_MODE = true
+        productDao =
+            ProductsDatabase.getInstance(InstrumentationRegistry.getInstrumentation().targetContext)
+                ?.getProductsDao()
+
+        /*startKoin {
             modules(listOf(viewModelModule, usecaseModule, repoModule))
-        }
+        }*/
     }
 
     @Test
@@ -57,7 +54,7 @@ class HomePageTest : KoinTest {
         assert(item.equals(dbItem))
     }
 
-    @Test
+    /*@Test
     fun filterLaptopWithNull() {
         val list = useCases.filterLaptop(null)
         Assert.assertNotNull(list)
@@ -67,7 +64,7 @@ class HomePageTest : KoinTest {
     fun filterFurnitureWithNull() {
         val list = useCases.filterFurniture(null)
         Assert.assertNotNull(list)
-    }
+    }*/
 
 
     @Throws(InterruptedException::class)
@@ -82,6 +79,7 @@ class HomePageTest : KoinTest {
             }
 
         }
+
         liveData.observeForever(observer)
         latch.await(2, TimeUnit.SECONDS)
 

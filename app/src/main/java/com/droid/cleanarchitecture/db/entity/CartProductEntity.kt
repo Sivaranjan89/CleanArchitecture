@@ -1,4 +1,4 @@
-package com.droid.cleanarchitecture.db
+package com.droid.cleanarchitecture.db.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

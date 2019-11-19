@@ -1,4 +1,4 @@
-package com.droid.cleanarchitecture.db
+package com.droid.cleanarchitecture.db.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -12,6 +12,6 @@ data class ProductsEntity(
     @ColumnInfo var price: String,
     @ColumnInfo var wasPrice: String,
     @ColumnInfo var discount: String,
-    @ColumnInfo var image: String,
-    @ColumnInfo var stockAvailable: Boolean
+    @ColumnInfo var stockAvailable: Boolean,
+    @ColumnInfo var image: String
 )
