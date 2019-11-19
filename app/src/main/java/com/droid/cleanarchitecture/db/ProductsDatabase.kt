@@ -5,10 +5,16 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = arrayOf(ProductsEntity::class), version = 1, exportSchema = false)
+@Database(
+    entities = arrayOf(ProductsEntity::class, CartProductEntity::class),
+    version = 1,
+    exportSchema = false
+)
 abstract class ProductsDatabase : RoomDatabase() {
 
     abstract fun getProductsDao(): ProductsDao
+
+    abstract fun getCartDao(): CartDao
 
     companion object {
         private var INSTANCE: ProductsDatabase? = null

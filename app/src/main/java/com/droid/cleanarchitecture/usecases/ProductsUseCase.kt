@@ -1,9 +1,7 @@
 package com.droid.cleanarchitecture.usecases
 
+import com.droid.cleanarchitecture.db.CartProductEntity
 import com.droid.cleanarchitecture.db.ProductsEntity
-import com.droid.cleanarchitecture.home.model.Product
-import com.droid.cleanarchitecture.home.model.ProductList
-import com.droid.cleanarchitecture.pdp.model.ProductDetail
 import com.droid.cleanarchitecture.repository.ProductsRepository
 import com.droid.cleanarchitecture.utils.FURNITURE
 import com.droid.cleanarchitecture.utils.LAPTOP
@@ -46,7 +44,5 @@ class ProductsUseCase : KoinComponent {
         return products
     }
 
-    fun addProductToCart(product: ProductDetail): Boolean {
-        return true
-    }
+    fun addProductToCart(product: CartProductEntity) = repository.addProductToCart(product)
 }

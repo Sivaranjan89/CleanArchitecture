@@ -10,7 +10,7 @@ interface ProductsDao {
     fun getAllProducts(): LiveData<List<ProductsEntity>>
 
     @Query("SELECT * FROM Products WHERE productId = :id")
-    fun getProductFromId(id: Long): ProductsEntity
+    fun getProductFromId(id: Long): LiveData<ProductsEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addProduct(product: ProductsEntity)

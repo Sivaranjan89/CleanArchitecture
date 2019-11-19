@@ -12,10 +12,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.droid.cleanarchitecture.R
 import com.droid.cleanarchitecture.databinding.PdpActivityBinding
+import com.droid.cleanarchitecture.db.CartProductEntity
 import com.droid.cleanarchitecture.db.ProductsEntity
-import com.droid.cleanarchitecture.pdp.model.ProductDetail
 import com.droid.cleanarchitecture.pdp.viewmodel.PDPViewModel
 import com.droid.cleanarchitecture.utils.PRODUCT
+import com.droid.cleanarchitecture.utils.getCartProduct
 import com.squareup.picasso.Picasso
 import org.koin.core.KoinComponent
 import org.koin.core.inject
@@ -39,12 +40,17 @@ class ProductDetailActivity : AppCompatActivity(), KoinComponent {
 
         init()
 
-        product = productId?.let { model.getProduct(it) }
 
-        binding.product = product
+        productId?.let {
+            model.getProduct(it)?.observe(this, Observer {
+                product = it
 
-        Picasso.get().load(product?.image).placeholder(R.mipmap.placeholder)
-            .into(image)
+                binding.product = product
+
+                Picasso.get().load(product?.image).placeholder(R.mipmap.placeholder)
+                    .into(image)
+            })
+        }
 
         addToCart?.setOnClickListener {
             if (itemAdded) {
@@ -52,23 +58,16 @@ class ProductDetailActivity : AppCompatActivity(), KoinComponent {
                 addToCart?.text = getString(R.string.add_to_cart)
                 navigateToCart()
             } else {
-                //product?.let { it1 -> model.addProductToCart(it1) }
+                val item = product?.let { getCartProduct(it) }
+                item?.let { t -> model.addProductToCart(t) }
+                itemAdded = true
+                addToCart?.text = getString(R.string.view_cart)
             }
         }
-
-        model.cartSuccess.observe(this, Observer { success ->
-            itemAdded = success
-            if (success) {
-                addToCart?.text = getString(R.string.view_cart)
-            } else {
-                Toast.makeText(this, getString(R.string.add_failure_to_cart), Toast.LENGTH_SHORT)
-                    .show()
-            }
-        })
     }
 
     private fun navigateToCart() {
-
+        TODO()
     }
 
     private fun init() {

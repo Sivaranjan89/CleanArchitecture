@@ -1,11 +1,7 @@
 package com.droid.cleanarchitecture.repository
 
 import android.content.Context
-import com.droid.cleanarchitecture.db.ProductsDao
-import com.droid.cleanarchitecture.db.ProductsDatabase
-import com.droid.cleanarchitecture.db.ProductsEntity
-import com.droid.cleanarchitecture.pdp.model.ProductDetail
-import com.google.gson.Gson
+import com.droid.cleanarchitecture.db.*
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 
@@ -14,15 +10,17 @@ class ProductsRepository : KoinComponent {
     val context: Context by inject()
 
     private var productDao: ProductsDao?
+    private var cartDao: CartDao?
 
     init {
         val db = ProductsDatabase.getInstance(context)
         productDao = db?.getProductsDao()
+        cartDao = db?.getCartDao()
     }
 
     fun getAllProducts() = productDao?.getAllProducts()
 
-    fun getProduct(product: Long): ProductsEntity? {
-        return productDao?.getProductFromId(product)
-    }
+    fun getProduct(id: Long) = productDao?.getProductFromId(id)
+
+    fun addProductToCart(product: CartProductEntity) = cartDao?.addProductToCart(product)
 }
