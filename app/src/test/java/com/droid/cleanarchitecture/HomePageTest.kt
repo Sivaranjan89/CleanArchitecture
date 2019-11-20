@@ -2,6 +2,7 @@ package com.droid.cleanarchitecture
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
+import com.droid.cleanarchitecture.db.ProductsDatabase
 import com.droid.cleanarchitecture.db.dao.ProductsDao
 import com.droid.cleanarchitecture.db.entity.ProductsEntity
 import com.droid.cleanarchitecture.di.repoModule
@@ -18,6 +19,7 @@ import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
 import org.koin.test.KoinTest
 import org.koin.test.inject
+import org.mockito.Mockito.mock
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
 
@@ -27,11 +29,15 @@ class HomePageTest : KoinTest {
 
     val useCases: ProductsUseCase by inject()
 
-    var productDao: ProductsDao? = null
+    lateinit var db: ProductsDatabase
+    lateinit var dao: ProductsDao
 
 
     @Before
     fun setUp() {
+        db = mock(ProductsDatabase::class.java)
+        dao = db.getProductsDao()
+
         startKoin {
             modules(listOf(viewModelModule, usecaseModule, repoModule))
         }
@@ -50,9 +56,9 @@ class HomePageTest : KoinTest {
             image = "https://switch.com.my/wp-content/uploads/2018/08/MBTB1518SG.png"
         )
 
-        productDao?.addProduct(item)
+        dao.addProduct(item)
 
-        val dbItem = productDao?.getProductFromId(item.productId)?.let { getValue(it) }
+        val dbItem = dao.getProductFromId(item.productId)
 
         assert(item.equals(dbItem))
     }

@@ -13,6 +13,9 @@ interface ProductsDao {
     @Query("SELECT * FROM Products WHERE productId = :id")
     fun getProductFromId(id: Long): LiveData<ProductsEntity>
 
+    @Query("SELECT * FROM Products WHERE productId = :id")
+    fun getProductFromIdForTest(id: Long): ProductsEntity
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addProduct(product: ProductsEntity)
 
