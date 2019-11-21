@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+/*Find how to change column name*/
 @Entity(tableName = "cart")
 data class CartProductEntity(
     @ColumnInfo var productId: Long,

@@ -20,6 +20,7 @@
         </activity>
 
         <activity android:name=".pdp.view.ProductDetailActivity" />
+        <activity android:name=".cart.view.CartActivity" />
 
     </application>
 </manifest>

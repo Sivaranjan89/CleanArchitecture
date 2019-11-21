@@ -10,11 +10,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.droid.cleanarchitecture.R
+import com.droid.cleanarchitecture.cart.view.CartActivity
 import com.droid.cleanarchitecture.databinding.PdpActivityBinding
 import com.droid.cleanarchitecture.db.entity.ProductsEntity
 import com.droid.cleanarchitecture.pdp.viewmodel.PDPViewModel
 import com.droid.cleanarchitecture.utils.PRODUCT
 import com.droid.cleanarchitecture.utils.getCartProduct
+import com.droid.cleanarchitecture.utils.openActivity
 import com.squareup.picasso.Picasso
 import org.koin.core.KoinComponent
 import org.koin.core.inject
@@ -55,20 +57,19 @@ class ProductDetailActivity : AppCompatActivity(), KoinComponent {
 
         addToCart?.setOnClickListener {
             if (itemAdded) {
-                itemAdded = false
                 addToCart?.text = getString(R.string.add_to_cart)
                 navigateToCart()
             } else {
                 val item = product?.let { getCartProduct(it) }
                 item?.let { t -> model.addProductToCart(t) }
-                itemAdded = true
                 addToCart?.text = getString(R.string.view_cart)
             }
+            itemAdded = itemAdded.not()
         }
     }
 
     private fun navigateToCart() {
-        TODO()
+        openActivity(CartActivity::class.java)
     }
 
     private fun init() {

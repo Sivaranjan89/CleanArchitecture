@@ -31,7 +31,7 @@ android {
 dependencies {
     //Version Declaration
     def koinVersion = '2.0.1'
-    def archVersion = '1.1.1'
+    def archVersion = '2.2.2'
 
 
     //General
@@ -66,9 +66,8 @@ dependencies {
     kapt "com.android.databinding:compiler:3.1.4"
 
     //Room
-    implementation "android.arch.persistence.room:runtime:$archVersion"
-    implementation "android.arch.persistence.room:rxjava2:$archVersion"
-    kapt "android.arch.persistence.room:compiler:$archVersion"
+    implementation "androidx.room:room-runtime:$archVersion"
+    kapt "androidx.room:room-compiler:$archVersion"
 
     //Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.1.1"

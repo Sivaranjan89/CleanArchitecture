@@ -29,13 +29,12 @@ class HomePageTest : KoinTest {
 
     val useCases: ProductsUseCase by inject()
 
-    lateinit var db: ProductsDatabase
+    var db: ProductsDatabase = mock(ProductsDatabase::class.java)
     lateinit var dao: ProductsDao
 
 
     @Before
     fun setUp() {
-        db = mock(ProductsDatabase::class.java)
         dao = db.getProductsDao()
 
         startKoin {
@@ -44,7 +43,7 @@ class HomePageTest : KoinTest {
     }
 
     @Test
-    fun doesFetchProducts() {
+    fun verifyFetchProducts() {
         val item = ProductsEntity(
             productId = 1000100,
             category = "Laptop",
@@ -63,7 +62,7 @@ class HomePageTest : KoinTest {
         assert(item.equals(dbItem))
     }
 
-    @Test
+    /*@Test
     fun filterLaptopWithNull() {
         val list = useCases.filterLaptop(null)
         Assert.assertNotNull(list)
@@ -73,26 +72,7 @@ class HomePageTest : KoinTest {
     fun filterFurnitureWithNull() {
         val list = useCases.filterFurniture(null)
         Assert.assertNotNull(list)
-    }
-
-
-    @Throws(InterruptedException::class)
-    fun <T> getValue(liveData: LiveData<T>): T {
-        val data = arrayOfNulls<Any>(1)
-        val latch = CountDownLatch(1)
-        val observer = object : Observer<T> {
-            override fun onChanged(t: T?) {
-                data[0] = t
-                latch.countDown()
-                liveData.removeObserver(this)//To change body of created functions use File | Settings | File Templates.
-            }
-
-        }
-        liveData.observeForever(observer)
-        latch.await(2, TimeUnit.SECONDS)
-
-        return data[0] as T
-    }
+    }*/
 
     @After
     fun after() {

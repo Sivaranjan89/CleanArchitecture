@@ -2,6 +2,7 @@ package com.droid.cleanarchitecture.home.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.droid.cleanarchitecture.db.ProductsDatabase
 import com.droid.cleanarchitecture.db.entity.ProductsEntity
 import com.droid.cleanarchitecture.usecases.ProductsUseCase
 import org.koin.core.KoinComponent
@@ -11,19 +12,14 @@ class HomeViewModel() : ViewModel(), KoinComponent {
 
     private val useCase: ProductsUseCase by inject()
 
-    var laptop: MutableLiveData<ArrayList<ProductsEntity>> = MutableLiveData()
-    var furniture: MutableLiveData<ArrayList<ProductsEntity>> = MutableLiveData()
+    var list: List<ProductsEntity>? = null
     var clickedProduct: MutableLiveData<ProductsEntity> = MutableLiveData()
 
 
     fun getProducts() = useCase.getProducts()
 
-    fun filterLaptop(list: List<ProductsEntity>?) {
-        laptop.value = list?.let { useCase.filterLaptop(it) }
-    }
+    fun filterProducts(name: String) = useCase.filterProducts(list, name)
 
-    fun filterFurniture(list: List<ProductsEntity>?) {
-        furniture.value = list?.let { useCase.filterFurniture(it) }
-    }
+    fun prePopulateProducts(database: ProductsDatabase?) = useCase.loadProductsIntoDB(database)
 
 }

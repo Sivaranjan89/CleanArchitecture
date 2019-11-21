@@ -7,6 +7,8 @@
     android:padding="@dimen/dimen_10"
     android:id="@+id/item_view">
 
+    <!--Layout Binding-->
+
     <ImageView
         android:id="@+id/item_img"
         android:layout_width="200sp"

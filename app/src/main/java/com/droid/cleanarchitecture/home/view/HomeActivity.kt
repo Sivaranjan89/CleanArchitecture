@@ -10,8 +10,6 @@ import com.droid.cleanarchitecture.home.view.fragment.CategoryFragment
 import com.droid.cleanarchitecture.home.viewmodel.HomeViewModel
 import com.droid.cleanarchitecture.pdp.view.ProductDetailActivity
 import com.droid.cleanarchitecture.utils.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class HomeActivity : AppCompatActivity() {
@@ -22,13 +20,11 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_activity)
 
-        loadProductsIntoDB()
-
-        loadFragments()
+        model.prePopulateProducts(ProductsDatabase.getInstance(this))
 
         model.getProducts()?.observe(this, Observer {
-            model.filterFurniture(it)
-            model.filterLaptop(it)
+            model.list = it
+            loadFragments()
         })
 
         model.clickedProduct.observe(this, Observer {
@@ -46,18 +42,6 @@ class HomeActivity : AppCompatActivity() {
         supportFragmentManager.inTransaction {
             replace(R.id.laptop_container, CategoryFragment.newInstance(LAPTOP))
             replace(R.id.furniture_container, CategoryFragment.newInstance(FURNITURE))
-        }
-    }
-
-    private fun loadProductsIntoDB() {
-        val db = ProductsDatabase.getInstance(this)
-
-        val products = generateAllProducts()
-
-        for (item in products) {
-            GlobalScope.launch {
-                db?.getProductsDao()?.addProduct(item)
-            }
         }
     }
 }
