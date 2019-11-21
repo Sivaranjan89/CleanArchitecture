@@ -8,8 +8,10 @@ import com.droid.cleanarchitecture.db.dao.CartDao
 import com.droid.cleanarchitecture.db.dao.ProductsDao
 import com.droid.cleanarchitecture.db.entity.ProductsEntity
 import com.droid.cleanarchitecture.usecases.ProductsUseCase
-import com.droid.cleanarchitecture.utils.generateAllProducts
-import com.droid.cleanarchitecture.utils.getCartProduct
+import com.droid.cleanarchitecture.utils.FURNITURE
+import com.droid.cleanarchitecture.utils.LAPTOP
+import com.droid.cleanarchitecture.utils.extensions.generateAllProducts
+import com.droid.cleanarchitecture.utils.extensions.getCartProduct
 import org.junit.After
 import org.junit.Assert
 import org.junit.Before
@@ -32,7 +34,8 @@ class ProductsTest : KoinComponent {
     @Before
     fun setUp() {
         val context = ApplicationProvider.getApplicationContext<Context>()
-        products = generateAllProducts()
+        products =
+            generateAllProducts()
 
         ProductsDatabase.TEST_MODE = false
         database = ProductsDatabase.getInstance(context)
@@ -64,25 +67,25 @@ class ProductsTest : KoinComponent {
 
     @Test
     fun filterLaptopWithNull() {
-        val list = useCase.filterLaptop(null)
+        val list = useCase.filterProducts(null, LAPTOP)
         Assert.assertNotNull(list)
     }
 
     @Test
     fun filterFurnitureWithNull() {
-        val list = useCase.filterFurniture(null)
+        val list = useCase.filterProducts(null, FURNITURE)
         Assert.assertNotNull(list)
     }
 
     @Test
     fun filterLaptopWithData() {
-        val list = useCase.filterLaptop(products)
+        val list = useCase.filterProducts(products, LAPTOP)
         Assert.assertNotNull(list)
     }
 
     @Test
     fun filterFurnitureWithData() {
-        val list = useCase.filterFurniture(products)
+        val list = useCase.filterProducts(products, FURNITURE)
         Assert.assertNotNull(list)
     }
 
@@ -90,7 +93,11 @@ class ProductsTest : KoinComponent {
     fun checkProductAddedToCart() {
         val product = products.get(0)
 
-        cartDao?.addProduct(getCartProduct(product))
+        cartDao?.addProduct(
+            getCartProduct(
+                product
+            )
+        )
 
         val dbItem = cartDao?.getProductFromId(product.productId)
 

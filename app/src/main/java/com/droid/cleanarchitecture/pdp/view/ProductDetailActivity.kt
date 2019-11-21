@@ -15,8 +15,8 @@ import com.droid.cleanarchitecture.databinding.PdpActivityBinding
 import com.droid.cleanarchitecture.db.entity.ProductsEntity
 import com.droid.cleanarchitecture.pdp.viewmodel.PDPViewModel
 import com.droid.cleanarchitecture.utils.PRODUCT
-import com.droid.cleanarchitecture.utils.getCartProduct
-import com.droid.cleanarchitecture.utils.openActivity
+import com.droid.cleanarchitecture.utils.extensions.getCartProduct
+import com.droid.cleanarchitecture.utils.extensions.openActivity
 import com.squareup.picasso.Picasso
 import org.koin.core.KoinComponent
 import org.koin.core.inject
@@ -60,7 +60,11 @@ class ProductDetailActivity : AppCompatActivity(), KoinComponent {
                 addToCart?.text = getString(R.string.add_to_cart)
                 navigateToCart()
             } else {
-                val item = product?.let { getCartProduct(it) }
+                val item = product?.let {
+                    getCartProduct(
+                        it
+                    )
+                }
                 item?.let { t -> model.addProductToCart(t) }
                 addToCart?.text = getString(R.string.view_cart)
             }

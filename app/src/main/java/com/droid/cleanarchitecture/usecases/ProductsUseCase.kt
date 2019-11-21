@@ -4,7 +4,7 @@ import com.droid.cleanarchitecture.db.ProductsDatabase
 import com.droid.cleanarchitecture.db.entity.CartProductEntity
 import com.droid.cleanarchitecture.db.entity.ProductsEntity
 import com.droid.cleanarchitecture.repository.ProductsRepository
-import com.droid.cleanarchitecture.utils.generateAllProducts
+import com.droid.cleanarchitecture.utils.extensions.generateAllProducts
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.koin.core.KoinComponent
@@ -38,7 +38,8 @@ class ProductsUseCase : KoinComponent {
     fun addProductToCart(product: CartProductEntity) = repository.addProductToCart(product)
 
     fun loadProductsIntoDB(database: ProductsDatabase?) {
-        val products = generateAllProducts()
+        val products =
+            generateAllProducts()
 
         for (item in products) {
             GlobalScope.launch {

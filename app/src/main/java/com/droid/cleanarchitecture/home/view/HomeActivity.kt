@@ -10,6 +10,8 @@ import com.droid.cleanarchitecture.home.view.fragment.CategoryFragment
 import com.droid.cleanarchitecture.home.viewmodel.HomeViewModel
 import com.droid.cleanarchitecture.pdp.view.ProductDetailActivity
 import com.droid.cleanarchitecture.utils.*
+import com.droid.cleanarchitecture.utils.extensions.inTransaction
+import com.droid.cleanarchitecture.utils.extensions.openActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class HomeActivity : AppCompatActivity() {
