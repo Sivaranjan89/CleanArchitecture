@@ -7,6 +7,10 @@
         <variable
             name="product"
             type="com.droid.cleanarchitecture.db.entity.ProductsEntity" />
+
+        <variable
+            name="model"
+            type="com.droid.cleanarchitecture.home.viewmodel.HomeViewModel" />
     </data>
 
 
@@ -14,7 +18,8 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:padding="@dimen/dimen_10"
-        android:id="@+id/item">
+        android:id="@+id/item"
+        android:onClick="@{()->model.itemClicked(product)}">
 
         <ImageView
             android:id="@+id/item_img"

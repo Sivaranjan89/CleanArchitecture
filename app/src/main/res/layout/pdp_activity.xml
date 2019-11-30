@@ -28,6 +28,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="@dimen/dimen_10"
+            app:imageUrl="@{product.image}"
             android:contentDescription="@string/product_image_pdp" />
 
         <TextView

@@ -17,7 +17,6 @@ import com.droid.cleanarchitecture.pdp.viewmodel.PDPViewModel
 import com.droid.cleanarchitecture.utils.PRODUCT
 import com.droid.cleanarchitecture.utils.extensions.getCartProduct
 import com.droid.cleanarchitecture.utils.extensions.openActivity
-import com.squareup.picasso.Picasso
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 
@@ -28,7 +27,6 @@ class ProductDetailActivity : AppCompatActivity(), KoinComponent {
     private var productId: Long? = 0
     private var product: ProductsEntity? = null
 
-    private var image: ImageView? = null
     private var back: ImageView? = null
     private var wasPrice: TextView? = null
 
@@ -36,12 +34,9 @@ class ProductDetailActivity : AppCompatActivity(), KoinComponent {
 
     private lateinit var binding: PdpActivityBinding
 
-    private var itemAdded: Boolean = false
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.pdp_activity)
 
         init()
 
@@ -49,14 +44,13 @@ class ProductDetailActivity : AppCompatActivity(), KoinComponent {
             model.getProduct(it)?.observe(this, Observer {
                 product = it
 
+                binding = DataBindingUtil.setContentView(this, R.layout.pdp_activity)
                 binding.product = product
-
-                Picasso.get().load(product?.image).placeholder(R.mipmap.placeholder).into(image)
             })
         }
 
-        addToCart?.setOnClickListener {
-            if (itemAdded) {
+        model?.addToCart.observe(this, Observer { added ->
+            if (added) {
                 addToCart?.text = getString(R.string.add_to_cart)
                 navigateToCart()
             } else {
@@ -68,7 +62,10 @@ class ProductDetailActivity : AppCompatActivity(), KoinComponent {
                 item?.let { t -> model.addProductToCart(t) }
                 addToCart?.text = getString(R.string.view_cart)
             }
-            itemAdded = itemAdded.not()
+        })
+
+        addToCart?.setOnClickListener {
+            model.clickAddToCart()
         }
     }
 
@@ -78,7 +75,7 @@ class ProductDetailActivity : AppCompatActivity(), KoinComponent {
 
     private fun init() {
         productId = intent.getLongExtra(PRODUCT, 0)
-        image = findViewById(R.id.product_image)
+
         back = findViewById(R.id.back)
         wasPrice = findViewById(R.id.product_was_price)
         addToCart = findViewById(R.id.add_to_cart)

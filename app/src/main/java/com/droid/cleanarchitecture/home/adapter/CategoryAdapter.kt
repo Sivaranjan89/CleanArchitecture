@@ -32,13 +32,15 @@ class CategoryAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(items.get(position))
+        holder.bind(items.get(position), model)
     }
 
-    class ViewHolder(val binding: ItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: Any) {
-            binding.setVariable(BR.product, data)
-            binding.executePendingBindings()
+    class ViewHolder(
+        val binding: ItemViewBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(data: ProductsEntity, viewModel: HomeViewModel) {
+            binding.product = data
+            binding.model = viewModel
         }
     }
 }

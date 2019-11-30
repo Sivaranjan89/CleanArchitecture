@@ -22,4 +22,8 @@ class HomeViewModel() : ViewModel(), KoinComponent {
 
     fun prePopulateProducts(database: ProductsDatabase?) = useCase.loadProductsIntoDB(database)
 
+    fun itemClicked(product: ProductsEntity) {
+        clickedProduct.value = product
+    }
+
 }
