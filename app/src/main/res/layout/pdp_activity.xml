@@ -6,6 +6,10 @@
         <variable
             name="product"
             type="com.droid.cleanarchitecture.db.entity.ProductsEntity" />
+
+        <variable
+            name="model"
+            type="com.droid.cleanarchitecture.pdp.viewmodel.PDPViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -53,7 +57,7 @@
 
         <TextView
             android:id="@+id/product_was_price"
-            android:text="@={product.wasPrice}"
+            app:wasPrice="@{product.wasPrice}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/product_price"
@@ -63,7 +67,7 @@
 
         <TextView
             android:id="@+id/product_savings"
-            android:text="@={product.discount}"
+            app:savePrice="@{product.discount}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/product_was_price"
@@ -79,7 +83,8 @@
             android:gravity="center"
             android:text="@string/add_to_cart"
             style="@style/BoldTextView_15"
-            android:background="@color/red" />
+            android:background="@color/red"
+            android:onClick="@{()->model.clickAddToCart()}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

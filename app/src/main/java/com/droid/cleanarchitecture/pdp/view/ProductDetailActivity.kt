@@ -1,11 +1,9 @@
 package com.droid.cleanarchitecture.pdp.view
 
-import android.graphics.Paint
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -28,8 +26,6 @@ class ProductDetailActivity : AppCompatActivity(), KoinComponent {
     private var product: ProductsEntity? = null
 
     private var back: ImageView? = null
-    private var wasPrice: TextView? = null
-
     private var addToCart: Button? = null
 
     private lateinit var binding: PdpActivityBinding
@@ -38,7 +34,7 @@ class ProductDetailActivity : AppCompatActivity(), KoinComponent {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        init()
+        productId = intent.getLongExtra(PRODUCT, 0)
 
         productId?.let {
             model.getProduct(it)?.observe(this, Observer {
@@ -46,11 +42,14 @@ class ProductDetailActivity : AppCompatActivity(), KoinComponent {
 
                 binding = DataBindingUtil.setContentView(this, R.layout.pdp_activity)
                 binding.product = product
+                binding.model = model
+
+                init()
             })
         }
 
-        model?.addToCart.observe(this, Observer { added ->
-            if (added) {
+        model.addToCart.observe(this, Observer { added ->
+            if (!added) {
                 addToCart?.text = getString(R.string.add_to_cart)
                 navigateToCart()
             } else {
@@ -63,10 +62,6 @@ class ProductDetailActivity : AppCompatActivity(), KoinComponent {
                 addToCart?.text = getString(R.string.view_cart)
             }
         })
-
-        addToCart?.setOnClickListener {
-            model.clickAddToCart()
-        }
     }
 
     private fun navigateToCart() {
@@ -74,13 +69,9 @@ class ProductDetailActivity : AppCompatActivity(), KoinComponent {
     }
 
     private fun init() {
-        productId = intent.getLongExtra(PRODUCT, 0)
-
         back = findViewById(R.id.back)
-        wasPrice = findViewById(R.id.product_was_price)
         addToCart = findViewById(R.id.add_to_cart)
 
         back?.visibility = View.VISIBLE
-        wasPrice?.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
     }
 }
