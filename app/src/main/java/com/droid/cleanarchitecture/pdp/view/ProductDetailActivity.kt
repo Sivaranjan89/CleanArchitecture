@@ -96,11 +96,9 @@ class ProductDetailActivity : AppCompatActivity(), KoinComponent {
                 }
             }
 
-            runOnUiThread(
-                {
+            runOnUiThread({
                     cartCounter?.text = cartCount.toString()
-                }
-            )
+            })
         }
     }
 }
