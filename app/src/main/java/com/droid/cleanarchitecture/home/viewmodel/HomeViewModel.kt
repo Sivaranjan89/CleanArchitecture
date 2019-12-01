@@ -18,6 +18,8 @@ class HomeViewModel() : ViewModel(), KoinComponent {
 
     fun getProducts() = useCase.getProducts()
 
+    fun getCartProducts() = useCase.getCartProducts()
+
     fun filterProducts(name: String) = useCase.filterProducts(list, name)
 
     fun prePopulateProducts(database: ProductsDatabase?) = useCase.loadProductsIntoDB(database)

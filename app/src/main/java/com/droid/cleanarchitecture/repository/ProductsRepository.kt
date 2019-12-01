@@ -23,6 +23,8 @@ class ProductsRepository : KoinComponent {
 
     fun getAllProducts() = productDao?.getAllProducts()
 
+    fun getCartProducts() = cartDao?.getAllProductsFromCart()
+
     fun getProduct(id: Long) = productDao?.getProductFromId(id)
 
     fun addProductToCart(product: CartProductEntity) = cartDao?.addProductToCart(product)

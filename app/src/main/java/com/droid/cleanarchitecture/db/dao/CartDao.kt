@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 abstract class CartDao {
 
     @Query("SELECT * FROM cart")
-    abstract fun getAllProductsFromCart(): LiveData<List<CartProductEntity>>
+    abstract fun getAllProductsFromCart(): List<CartProductEntity>
 
     @Query("SELECT * FROM cart WHERE productId = :id")
     abstract fun getProductFromId(id: Long): CartProductEntity

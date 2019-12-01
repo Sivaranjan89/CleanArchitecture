@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -15,6 +16,8 @@ import com.droid.cleanarchitecture.pdp.viewmodel.PDPViewModel
 import com.droid.cleanarchitecture.utils.PRODUCT
 import com.droid.cleanarchitecture.utils.extensions.getCartProduct
 import com.droid.cleanarchitecture.utils.extensions.openActivity
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 
@@ -27,6 +30,7 @@ class ProductDetailActivity : AppCompatActivity(), KoinComponent {
 
     private var back: ImageView? = null
     private var addToCart: Button? = null
+    private var cartCounter: TextView? = null
 
     private lateinit var binding: PdpActivityBinding
 
@@ -64,6 +68,11 @@ class ProductDetailActivity : AppCompatActivity(), KoinComponent {
         })
     }
 
+    override fun onResume() {
+        super.onResume()
+        updateCartCounter()
+    }
+
     private fun navigateToCart() {
         openActivity(CartActivity::class.java)
     }
@@ -71,7 +80,27 @@ class ProductDetailActivity : AppCompatActivity(), KoinComponent {
     private fun init() {
         back = findViewById(R.id.back)
         addToCart = findViewById(R.id.add_to_cart)
+        cartCounter = findViewById(R.id.cart_count)
 
         back?.visibility = View.VISIBLE
+    }
+
+    private fun updateCartCounter() {
+        GlobalScope.launch {
+            val cartItems = model.getCartProducts()
+            var cartCount = 0
+
+            if (cartItems != null) {
+                for (item in cartItems) {
+                    cartCount = cartCount + item.quantity
+                }
+            }
+
+            runOnUiThread(
+                {
+                    cartCounter?.text = cartCount.toString()
+                }
+            )
+        }
     }
 }

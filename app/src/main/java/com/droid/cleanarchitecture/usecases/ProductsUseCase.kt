@@ -16,6 +16,8 @@ class ProductsUseCase : KoinComponent {
 
     fun getProducts() = repository.getAllProducts()
 
+    fun getCartProducts() = repository.getCartProducts()
+
     fun getProduct(product: Long) = repository.getProduct(product)
 
     fun filterProducts(
